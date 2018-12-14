@@ -1,46 +1,44 @@
 var connection = require("./connection");
 
 //reads all the data in the burgers table
-var ORM = {
-    selectAll: function() {
-        var query = "SELECT * FROM burgers";
-        connection.query(query, function (err, res) {
+var orm = {
+    selectAll: function(table) {
+        var query = "SELECT * FROM ??";
+        connection.query(query, [table] ,function (err, res) {
             if (err) {
                 throw err;
             }
-
             console.log(res);
         });
     },
-    insertOne: function(name, devoured) {
-        var query = "INSERT INTO burgers(burger_name, devoured) VALUES(?, ?)";
-        var parameters = {
-            burger_name: name,
-            devoured: devoured
-        }
+    insertOne: function(table, columns, values) {
+        var query = "INSERT INTO ??(??) VALUES(?)";
+        var parameters = [
+            table,
+            columns,
+            values
+        ];
         connection.query(query, parameters, function(err, res) {
             if(err) {
                 throw err;
             }
-
             console.log(res);
         });
     },
-    updateOne: function(id, name, devoured) {
-        var query = "UPDATE burgers SET burger_name=?, devoured=? WHERE id=?";
-        var parameters = {
-            burger_name: name,
-            devoured: devoured,
-            id: id
-        };
+    updateOne: function(table, valuesObj, condition) {
+        var query = "UPDATE ?? SET ? WHERE ?";
+        var parameters = [
+            table,
+            valuesObj,
+            condition
+        ];
         connection.query(query, parameters, function(err, res) {
             if(err) {
                 throw err;
             }
-
             console.log(res);
         });
     }
 }
 
-module.exports = ORM;
+module.exports = orm;
