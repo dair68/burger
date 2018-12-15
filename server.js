@@ -10,6 +10,12 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+//setting handlebars
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
 //importing routes
 var routes = require("./controllers/burgers_controller");
 app.use(routes);

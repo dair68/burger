@@ -1,5 +1,5 @@
-INSERT INTO burgers(burger_name, devoured)
+INSERT INTO burgers(burger_name)
 VALUES
-("Big Bun Fun", false), 
-("Majestic Meat Packet", false),
-("Juicy Jelly Patty", false);
+("Big Bun Fun"), 
+("Majestic Meat Packet"),
+("Juicy Jelly Patty");
