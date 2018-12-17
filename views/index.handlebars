@@ -1,37 +1,53 @@
+<div class="jumbotron text-center py-1 mb-2">
+    <h1>Eat-Da-Burger</h1>
+    <img src="/assets/img/burger.png" alt="burger" class="img-fluid" id="burger-pic">
+    <h2>The best site for eating out ;)</h2>
+</div>
+
 <div class="container">
-    <h1 class="text-center">Eat-Da-Burger ;)</h1>
-
     {{!-- displaying stored burgers --}}
-    <h2>Available Burgers</h2>
-    {{#each burgers}}
-    {{#unless devoured}}
-    <ul>
-        <li>
-            {{burger}}
-            <button class="devoured btn btn-dark" data-id={{id}}>Devour</button>
-        </li>
-    </ul>
-    {{/unless}}
-    {{/each}}
+    <div id="burgerContainer">
+        <div class="row">
+            {{!-- <div class="col-md-2"></div> --}}
+            <section class="col-md-6" id="availableBurgers">
+                <h2>Available Burgers</h2>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <ul>
+                    <li>
+                        {{burger}}
+                        <button class="devoured btn btn-dark" data-id={{id}}>Devour</button>
+                    </li>
+                </ul>
+                {{/unless}}
+                {{/each}}
+            </section>
 
-    <h2>Devoured Burgers</h2>
-    {{#each burgers}}
-    {{#if devoured}}
-    <ul>
-        <li>
-            {{burger}}
-            - Mmmmm, tasty!
-        </li>
-    </ul>
-    {{/if}}
-    {{/each}}
+            <section class="col-md-6" id="devouredBurgers">
+                <h2>Devoured Burgers</h2>
+                {{#each burgers}}
+                {{#if devoured}}
+                <ul>
+                    <li>
+                        {{burger}}
+                        - <span class="font-italic" id="tasty">Mmmmm, tasty!</span> 
+                    </li>
+                </ul>
+                {{/if}}
+                {{/each}}
+            </section>
+            {{!-- <div class="col-md-2"></div> --}}
+        </div>
+    </div>
 
-    <div id="inputContainer">
+    <div id="inputContainer" class="row py-2">
+        <div class="col-md-12">
         <form>
-            <label for="nameInput">Enter a person, place, or thing you wish to eat. Then click "Submit".</label>
+            <label for="nameInput" class="font-italic">Enter a person, place, or thing you wish to eat. Then click "Submit".</label>
             <input type="text" class="form-control" id="nameInput"><br>
             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </form>
+        </div>
     </div>
 </div>
 
